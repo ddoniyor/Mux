@@ -36,9 +36,9 @@ type ExactMux struct {
 	notFoundHandler http.Handler
 }
 
-/*func paramRouteMatches(entry exactMuxEntry, path string) (params map[string]string, ok bool)  {
-
-}*/
+//func paramRouteMatches(entry exactMuxEntry, path string) (params map[string]string, ok bool)  {
+//
+//}
 
 type Middleware func(handler http.HandlerFunc) http.HandlerFunc
 
@@ -228,7 +228,10 @@ func calculateWeight(pattern string) int {
 
 func FromContext(ctx context.Context, key string) (value string, ok bool) {
 	params, ok := ctx.Value(pathParamsKey).(map[string]string)
-	// TODO: check ok
+	if !ok{
+		fmt.Errorf("there is the error")
+	}
 	param, exists := params[key]
 	return param, exists
 }
+
