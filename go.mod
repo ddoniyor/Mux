@@ -1,4 +1,5 @@
-module mux
+ 
+module github.com/ddoniyor/mux
 
 go 1.13
 
